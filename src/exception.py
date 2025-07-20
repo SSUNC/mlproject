@@ -5,7 +5,7 @@ from src.logger import logging
 #function to extract the trace back exception and show the tb in the requred format
 def error_message_detail(error,error_detail:sys):
     _,_,exc_tb=error_detail.exc_info()
-    file_name=exc_tb.tb_frame.f_code.f_filename
+    file_name=exc_tb.tb_frame.f_code.co_filename
     error_message="Error occured in the python script name [{0}] line number [{1}] error message [{2}]".format(file_name,exc_tb.tb_lineno,str(error))
     return error_message
 
