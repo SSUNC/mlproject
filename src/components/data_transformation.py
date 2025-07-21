@@ -22,7 +22,7 @@ class DataTransformation:
     def __init__(self):
         self.data_transformation_config=DataTransformationConfig()
     
-    def get_data_transform_data():
+    def get_data_transform_data_object():
         '''
         Function is responsible for data transformation
         '''
