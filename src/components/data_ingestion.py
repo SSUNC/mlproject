@@ -9,7 +9,6 @@ from src.logger import logging
 
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
-
 #creating  a class
 
 @dataclass

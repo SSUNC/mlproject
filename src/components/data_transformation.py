@@ -22,7 +22,7 @@ class DataTransformation:
     def __init__(self):
         self.data_transformation_config=DataTransformationConfig()
     
-    def get_data_transform_data_object():
+    def get_data_transform_data_object(self):
         '''
         Function is responsible for data transformation
         '''
@@ -37,15 +37,16 @@ class DataTransformation:
             ]
             num_pipeline=Pipeline(
                 steps=[
-                    ('imputer',SimpleImputer(strategy='media')),
+                    ('imputer',SimpleImputer(strategy='median')),
                     ('scaler',StandardScaler())
                 ]
             )
 
             cat_pipeline=Pipeline(
                 steps=[('imputer',SimpleImputer(strategy='most_frequent')),
-                       ('scaler',StandardScaler(with_mean=False)),
-                       ('one_hot_encoder',OneHotEncoder())
+                        ('one_hot_encoder',OneHotEncoder()),
+                       ('scaler',StandardScaler(with_mean=False))
+                      
                         ]
             )
 
@@ -72,13 +73,13 @@ class DataTransformation:
 
             logging.info('Obtaining preprocessing object')
             
-            preprocessing_obj=self.get_data_transform_data()
+            preprocessing_obj=self.get_data_transform_data_object()
 
             target_column_name='math_score'
 
             numerical_columns=['reading_score','writing_score']
 
-            input_feature_test_df=train_df.drop(columns=[target_column_name],axis=1)
+            input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
             target_feature_train_df=train_df[target_column_name]
 
             input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
