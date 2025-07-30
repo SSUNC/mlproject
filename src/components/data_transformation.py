@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from dataclasses import dataclass
 
-from src.Utils import save_object
+from src.utils import save_object
 from src.logger import logging
 from src.exception import CustomException
 
@@ -48,7 +48,7 @@ class DataTransformation:
                        ('scaler',StandardScaler(with_mean=False))
                       
                         ]
-            )
+            )       
 
             logging.info(f"categorical columns:{categorical_columns}")
             logging.info(f"numerical columns:{numerical_columns}")
